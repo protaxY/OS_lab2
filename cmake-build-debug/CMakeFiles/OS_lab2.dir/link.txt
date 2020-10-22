@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/OS_lab2.dir/main.c.o CMakeFiles/OS_lab2.dir/child.c.o  -o OS_lab2 

@@ -1,0 +1,4 @@
+/home/protaxy/clion-2020.2.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/protaxy/CLionProjects/OS_lab2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/protaxy/CLionProjects/OS_lab2/cmake-build-debug
