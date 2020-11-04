@@ -1,6 +1,3 @@
-//
-// Created by protaxy on 10/22/20.
-//
 #include <stdio.h>
 #include <unistd.h>
 
@@ -8,11 +5,6 @@ int main(){
     printf("enter file name:");
     char filename[256];
     scanf("%s", filename);
-    FILE *file = fopen(filename, "w");
-    if (file == NULL){
-        printf("fopen error\n");
-        return -1;
-    }
     int fd[2];
     if (pipe(fd) == -1){
         printf("pipe error\n");
@@ -29,13 +21,10 @@ int main(){
             printf("dup2 error\n");
             return -1;
         }
-        if (dup2(fileno(file), fileno(stdout)) == -1){
-            printf("dup2 error\n");
-            return -1;
+        char* argv[3] = {"child", filename, (char *)NULL};
+        if (execv("child", argv) == -1){
+            printf("execl error\n");
         }
-        fclose(file);
-        const char * null = NULL;
-        execl("child", null);
     }
     else{
         close(fd[0]);
@@ -49,6 +38,5 @@ int main(){
         }
         close(fd[1]);
     }
-    fclose(file);
     return 0;
 }
